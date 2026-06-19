@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简明指南 · 华体会</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f9fafc;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 36px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+            padding: 2.5rem 2rem;
+        }
+
+        /* 导航 */
+        .top-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: baseline;
+            gap: 1.8rem 2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e6edf4;
+            margin-bottom: 2.8rem;
+        }
+
+        .top-nav .logo {
+            font-weight: 560;
+            font-size: 1.2rem;
+            letter-spacing: -0.01em;
+            color: #1e3a5f;
+        }
+
+        .top-nav a {
+            font-size: 0.94rem;
+            color: #3b5a78;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.1s;
+        }
+
+        .top-nav a:hover {
+            color: #0f2b44;
+            border-bottom-color: #8ba4be;
+        }
+
+        /* hero */
+        .hero {
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 560;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #121f2f;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .subhead {
+            font-size: 1.05rem;
+            color: #4d627a;
+            max-width: 90%;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e0e9f0;
+            margin: 2.2rem 0;
+        }
+
+        /* 通用标题 */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 530;
+            letter-spacing: -0.01em;
+            color: #1b3147;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-sub {
+            color: #4f6883;
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+        }
+
+        /* 卡片网格 (三个场景) */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        @media (min-width: 580px) {
+            .scene-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .scene-card {
+            background: #f4f8fe;
+            border-radius: 24px;
+            padding: 1.6rem 1.4rem 1.8rem;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            background: #eef4fc;
+            box-shadow: 0 6px 12px rgba(0, 20, 40, 0.04);
+        }
+
+        .scene-card h3 {
+            font-size: 1.15rem;
+            font-weight: 540;
+            margin-bottom: 0.5rem;
+            color: #1c3753;
+        }
+
+        .scene-card p {
+            font-size: 0.92rem;
+            color: #2f4a65;
+            line-height: 1.6;
+        }
+
+        .scene-card .emoji-badge {
+            display: inline-block;
+            font-size: 1.7rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 说明区块 (常见说明) */
+        .faq-slim {
+            margin: 2.5rem 0 1.8rem;
+            border-left: 3px solid #d7e2ee;
+            padding-left: 1.4rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.6rem;
+        }
+
+        .faq-item .q {
+            font-weight: 530;
+            color: #1b3147;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item .a {
+            font-size: 0.94rem;
+            color: #3b5a78;
+        }
+
+        .note-box {
+            background: #f2f5fa;
+            border-radius: 20px;
+            padding: 1.2rem 1.6rem;
+            margin: 2.2rem 0 0.8rem;
+            font-size: 0.93rem;
+            color: #2d4a64;
+        }
+
+        .note-box strong {
+            color: #1a314b;
+            font-weight: 530;
+        }
+
+        .inline-link {
+            color: #1f4b77;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            text-decoration-color: #b7ccdf;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+
+        .inline-link:hover {
+            color: #0a2a48;
+            text-decoration-color: #7f9cb9;
+        }
+
+        .footer-note {
+            margin-top: 3.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e2eaf3;
+            font-size: 0.85rem;
+            color: #6f87a0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .footer-note a {
+            color: #3f5e7c;
+            text-decoration: underline;
+            text-decoration-color: #c6d5e5;
+            text-underline-offset: 2px;
+        }
+
+        .footer-note a:hover {
+            color: #102b44;
+        }
+
+        @media (max-width: 480px) {
+            .page-wrap {
+                padding: 1.6rem 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .top-nav {
+                gap: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <span class="logo">✦ hth</span>
+        <a href="#guide">简明指引</a>
+        <a href="#scenes">常见场景</a>
+        <a href="#faq">说明</a>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <div class="hero">
+        <h1>华体会 · 轻量访问指引</h1>
+        <p class="subhead">一份温和的路线说明，帮助你快速了解平台特点与访问方式，省去不必要的摸索。</p>
+    </div>
+
+    <!-- 简短介绍 (从简明指南角度) -->
+    <p style="margin-bottom: 1.8rem; font-size: 0.98rem;">
+        我们整理了一份关于 <a class="inline-link" href="https://site-zh-hth.com.cn">华体会</a> 的简要说明，涵盖使用前可以留意的几点、常见使用情景，以及一些适用于新朋友的提醒。本文不构成操作建议，只作为客观的功能介绍。
+    </p>
+
+    <!-- 核心介绍 与 访问提醒 (混合) -->
+    <div style="background: #f7faff; border-radius: 28px; padding: 1.6rem 1.8rem; margin: 1.6rem 0 2.2rem;">
+        <p style="margin-bottom: 1rem;"><strong>▎访问前可以留意的几件事</strong></p>
+        <ul style="padding-left: 1.2rem; color: #2c4762; font-size: 0.94rem; list-style: square; line-height: 1.9;">
+            <li>建议使用主流浏览器的最新版本，以获得更好的显示与交互体验。</li>
+            <li>如果你第一次接触 <a class="inline-link" href="https://site-zh-hth.com.cn">华体会</a>，不妨先花几分钟浏览首页的模块分布，了解主要功能区域。</li>
+            <li>部分内容可能需要稳定的网络环境，请根据你所在地的情况酌情调整。</li>
+            <li>注意保护个人账户信息，不要通过非官方渠道提交密码或验证码。</li>
+        </ul>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div id="scenes">
+        <h2 class="section-title">三种常见使用场景</h2>
+        <p class="section-sub">根据大多数访问者的反馈，以下情景出现频率较高。</p>
+
+        <div class="scene-grid">
+            <div class="scene-card">
+                <div class="emoji-badge">📖</div>
+                <h3>信息查阅</h3>
+                <p>浏览平台各板块，了解功能分类、活动说明与规则更新。适合希望先熟悉整体框架的用户。</p>
+            </div>
+            <div class="scene-card">
+                <div class="emoji-badge">🔄</div>
+                <h3>日常使用</h3>
+                <p>登录后查看个人中心、订单记录或消息通知。日常操作路径清晰，导航栏提供快捷入口。</p>
+            </div>
+            <div class="scene-card">
+                <div class="emoji-badge">🧭</div>
+                <h3>新手指引</h3>
+                <p>如果你对界面还不熟悉，可以从首页的核心引导开始，逐步了解各模块的用途与关联。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ摘要) -->
+    <div id="faq" class="faq-slim">
+        <h2 style="font-size: 1.25rem; font-weight: 530; margin-bottom: 1.2rem; color: #1b3147;">常见说明 · 简答</h2>
+
+        <div class="faq-item">
+            <div class="q">— 华体会 是否支持移动设备？</div>
+            <div class="a">网页界面经过响应式适配，手机与平板均可正常浏览，部分交互针对触屏优化。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">— 如何确保访问的是官方站点？</div>
+            <div class="a">直接在浏览器地址栏输入 <a class="inline-link" href="https://site-zh-hth.com.cn">华体会</a> 的完整域名，并核对网址拼写。避免通过非正规渠道的链接进入。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">— 是否收取访问或注册费用？</div>
+            <div class="a">基础浏览与注册不产生费用。部分增值服务或特定活动以页面公示为准，请以官方说明为准。</div>
+        </div>
+    </div>
+
+    <!-- 补充提醒 (自然嵌入链接) -->
+    <div class="note-box">
+        <strong>💡 访问提醒：</strong> 当你需要了解最新动态或查找具体功能时，可以直接访问 <a class="inline-link" href="https://site-zh-hth.com.cn">华体会</a> 首页，从顶部导航或焦点区域开始。注意甄别信息来源，以官方网站发布的内容为准。
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <span>简明指南 · 仅供信息参考</span>
+        <span><a href="https://site-zh-hth.com.cn">华体会</a> — 官方站点</span>
+    </div>
+</div>
+</body>
+</html>
