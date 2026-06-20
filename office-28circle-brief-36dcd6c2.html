@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>28圈 · 杂志专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4fbf9;
+      color: #1d2b36;
+      line-height: 1.65;
+      padding: 0 16px;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 0 56px;
+    }
+
+    /* hero 横幅 */
+    .hero {
+      background: linear-gradient(145deg, #d7f0eb 0%, #b2ddd4 100%);
+      border-radius: 40px;
+      padding: 48px 28px 36px;
+      margin-bottom: 44px;
+      box-shadow: 0 8px 18px rgba(44, 101, 92, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #0b3b3a;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 span {
+      background: #0b3b3a;
+      color: #d7f0eb;
+      padding: 0 12px 0 14px;
+      border-radius: 40px;
+      font-weight: 480;
+      font-size: 1.9rem;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .hero .sub {
+      margin-top: 18px;
+      font-size: 1.1rem;
+      color: #1b4f4a;
+      max-width: 600px;
+      position: relative;
+      z-index: 1;
+      border-left: 3px solid #2a726a;
+      padding-left: 20px;
+      font-weight: 340;
+    }
+
+    /* 网格卡片区 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin: 48px 0 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 22px 30px;
+      box-shadow: 0 4px 12px rgba(37, 84, 78, 0.06);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      border: 1px solid #d2e7e2;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(24, 70, 63, 0.08);
+    }
+
+    .card .num {
+      font-size: 2.2rem;
+      font-weight: 380;
+      color: #40857a;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 460;
+      color: #174944;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #b4ddd2;
+      padding-bottom: 8px;
+      display: inline-block;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      color: #2a4340;
+      margin-top: 8px;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #def3ed;
+      color: #0e554b;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      margin-top: 16px;
+      font-weight: 400;
+    }
+
+    /* 自然叙述段落 — 杂志风格 */
+    .essay {
+      background: white;
+      border-radius: 32px;
+      padding: 32px 28px;
+      margin: 32px 0 28px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      border: 1px solid #d7ede6;
+    }
+
+    .essay h2 {
+      font-size: 1.5rem;
+      font-weight: 420;
+      color: #10564d;
+      margin-bottom: 20px;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .essay h2::before {
+      content: '●';
+      font-size: 1.2rem;
+      color: #3b887b;
+    }
+
+    .essay p {
+      margin-bottom: 18px;
+      font-size: 1.03rem;
+      color: #1f3734;
+    }
+
+    .essay p:last-child {
+      margin-bottom: 0;
+    }
+
+    .essay .highlight {
+      background: #dff1ec;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-weight: 430;
+      color: #0b423d;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      background: #cdded9;
+      border-radius: 60px 60px 30px 30px;
+      padding: 32px 26px 28px;
+      margin-top: 48px;
+      text-align: center;
+      border: 1px solid #b8d0c9;
+    }
+
+    .footer-note p {
+      font-size: 1.06rem;
+      color: #09332e;
+      margin-bottom: 6px;
+      font-weight: 340;
+    }
+
+    .footer-note .link-sentence {
+      font-size: 1.18rem;
+      background: white;
+      display: inline-block;
+      padding: 10px 28px;
+      border-radius: 50px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      margin-top: 10px;
+    }
+
+    .footer-note a {
+      color: #0a4c44;
+      text-decoration: none;
+      font-weight: 480;
+      border-bottom: 2px solid #398075;
+      padding-bottom: 2px;
+    }
+
+    .footer-note a:hover {
+      background: #174944;
+      color: #e5f7f1;
+      border-bottom-color: transparent;
+    }
+
+    /* 极小屏 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .hero h1 span {
+        font-size: 1.5rem;
+        padding: 0 8px;
+      }
+      .hero .sub {
+        font-size: 0.95rem;
+        padding-left: 14px;
+      }
+      .card {
+        padding: 22px 16px 24px;
+      }
+      .essay {
+        padding: 24px 16px;
+      }
+      .essay h2 {
+        font-size: 1.25rem;
+      }
+      .footer-note .link-sentence {
+        font-size: 1rem;
+        padding: 8px 18px;
+      }
+    }
+
+    /* 中等屏 */
+    @media (min-width: 768px) {
+      .hero {
+        padding: 60px 40px 44px;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .grid-cards {
+        gap: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 首页横幅 hero -->
+    <header class="hero">
+      <h1><span>28</span>圈 · 一种持续的观察</h1>
+      <div class="sub">从信息边界的涟漪到内核的秩序，一个关于内容聚合与认知节奏的探讨。</div>
+    </header>
+
+    <!-- 背景说明 · 杂志风格段落 -->
+    <div class="essay">
+      <h2>起点与索引</h2>
+      <p>最初只是几个兴趣节点的叠加——数据、阅读、工具、设计。后来这些节点慢慢连成线，形成一种围绕信息筛选与再组织的圈子。有人称之为内容圈，有人叫它关注链。而我们更愿意把它简称为 <span class="highlight">28圈</span>：一个并不庞大却保持更新的观察集合。</p>
+      <p>这个圈子没有固定的边界。它更像一种状态，在信息的潮汐中截取那些被验证过、值得留存的东西。从技术笔记到日常思考，从界面美学到效率方法，28圈 试图剥离冗余，留下骨架。</p>
+    </div>
+
+    <!-- 三段自然介绍（卡片网格） -->
+    <div class="grid-cards">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>筛选 · 而非堆砌</h3>
+        <p>面对每天的数百条资讯，28圈 倾向于做减法。只保留那些经过时间沉淀或具有结构启发的内容。与其追逐热点，不如理顺一个概念。</p>
+        <span class="tag">慢信息</span>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>工具 · 也是视角</h3>
+        <p>无论是写作、图表还是轻量研究，合适的工具会重塑思考方式。28圈 记录那些被反复使用的工具与工作流，并尝试拆解它们背后的逻辑。</p>
+        <span class="tag">方法论</span>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>聚合 · 保持克制</h3>
+        <p>聚合不是目的，理解才是。28圈 的关注点落在「为什么这个信息值得停留」上。每一条收录都带有简短的上下文，而不是简单的转发。</p>
+        <span class="tag">策展思维</span>
+      </div>
+    </div>
+
+    <!-- 进一步叙述：特点 / 场景 混合段落 -->
+    <div class="essay">
+      <h2>日常中的切片</h2>
+      <p>假如你曾在深夜翻阅一篇长文，或在零散时间里快速定位一个可靠的定义，那么你可能已经接触过类似 <a href="https://office-28circle.com" style="color:#0a5c50; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; font-weight: 440;">28圈</a> 的整理方式。它不追求覆盖所有领域，而是在几个核心主题上挖得深一些：信息架构、认知效率、以及数字环境下的写作。</p>
+      <p>场景可以是工作间隙，也可以是周末的集中阅读。28圈 提供的不只是链接，还包含一段简评或关联思考——这是它与收藏夹的区别所在。</p>
+    </div>
+
+    <!-- FAQ 摘要（非完整问答，而是凝练提示） -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; background: #edf7f3; border-radius: 28px; padding: 22px 24px; margin: 20px 0 24px; border: 1px solid #bfd9d1;">
+      <div style="grid-column: 1 / -1; margin-bottom: 6px;">
+        <span style="background: #31746a; color: white; padding: 2px 14px; border-radius: 30px; font-size: 0.8rem; letter-spacing: 0.4px;">常见关注点</span>
+      </div>
+      <div style="font-size: 0.92rem; color: #1d423d;"><strong style="color: #0a5549;">内容来源？</strong> 多为个人筛选、验证后的网络资源与原创笔记。</div>
+      <div style="font-size: 0.92rem; color: #1d423d;"><strong style="color: #0a5549;">更新频率？</strong> 不定期但持续，平均每周 2–4 次。</div>
+      <div style="font-size: 0.92rem; color: #1d423d;"><strong style="color: #0a5549;">适合谁？</strong> 对信息质量有要求、喜欢结构化阅读的人。</div>
+      <div style="font-size: 0.92rem; color: #1d423d;"><strong style="color: #0a5549;">是否有社区？</strong> 以站点内容为主，保持轻量边界。</div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+      <p>如果你也认同「少而精」的信息习惯，或许可以在这里停一会儿。</p>
+      <div class="link-sentence">
+        更多内容收录于 <a href="https://office-28circle.com">28圈</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 0.88rem; opacity: 0.7;">杂志风格 · 一期一会</p>
+    </div>
+  </div>
+</body>
+</html>
