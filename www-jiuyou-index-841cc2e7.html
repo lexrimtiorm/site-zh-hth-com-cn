@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jiuyou · 信息导航与站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f9fb;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 顶部导航 */
+        .navbar {
+            background-color: #10131c;
+            color: #e8ecf1;
+            padding: 18px 0;
+            border-bottom: 1px solid #2a3240;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #7c93d9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            color: #b9c4d4;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links li a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #121620 0%, #1b2330 100%);
+            padding: 80px 0 90px;
+            color: #f0f3f8;
+        }
+
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: #7c93d9;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 720px;
+            color: #ccd5e3;
+            margin-bottom: 28px;
+        }
+
+        .hero .trust-badge {
+            display: inline-block;
+            background: #222b3b;
+            border-radius: 30px;
+            padding: 8px 28px;
+            font-size: 0.9rem;
+            color: #b0bed6;
+            border: 1px solid #384358;
+        }
+
+        .hero .trust-badge i {
+            margin-right: 8px;
+        }
+
+        /* 核心介绍区 — 浅色背景 */
+        .intro-section {
+            background: #ffffff;
+            padding: 60px 0 50px;
+            border-bottom: 1px solid #e9ecf2;
+        }
+
+        .intro-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .intro-text {
+            flex: 2;
+            min-width: 280px;
+        }
+
+        .intro-text h2 {
+            font-size: 1.9rem;
+            font-weight: 500;
+            color: #141b29;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            margin-bottom: 16px;
+            color: #314156;
+            font-size: 1rem;
+        }
+
+        .intro-text a {
+            color: #3b5cb8;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #b7c7e6;
+            transition: border 0.2s, color 0.2s;
+        }
+
+        .intro-text a:hover {
+            color: #1b357a;
+            border-bottom: 1px solid #1b357a;
+        }
+
+        .intro-side {
+            flex: 1;
+            min-width: 200px;
+            background: #f4f7fc;
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .intro-side h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a2538;
+            margin-bottom: 14px;
+        }
+
+        .intro-side ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .intro-side ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #dfe6ef;
+            font-size: 0.95rem;
+            color: #2f4057;
+        }
+
+        .intro-side ul li:last-child {
+            border-bottom: none;
+        }
+
+        .intro-side ul li::before {
+            content: "▹";
+            color: #5c7ac4;
+            margin-right: 10px;
+        }
+
+        /* 三个场景模块 (卡片) */
+        .scenes {
+            background: #f8f9fb;
+            padding: 64px 0;
+        }
+
+        .scenes h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 500;
+            color: #141b29;
+            margin-bottom: 44px;
+        }
+
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 32px 24px 36px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef2f7;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(41, 70, 128, 0.06);
+        }
+
+        .scene-card .icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .scene-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1c2940;
+            margin-bottom: 12px;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #3e506b;
+            line-height: 1.6;
+        }
+
+        /* 常见说明 FAQ 摘要 */
+        .faq-summary {
+            background: #ffffff;
+            padding: 50px 0 60px;
+        }
+
+        .faq-summary .container {
+            max-width: 960px;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #141b29;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e6ebf3;
+            padding: 18px 0;
+        }
+
+        .faq-item:first-of-type {
+            border-top: 1px solid #e6ebf3;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1e2f48;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .faq-item p {
+            color: #3e4f67;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .faq-item a {
+            color: #3b5cb8;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .faq-item a:hover {
+            color: #142a65;
+        }
+
+        /* 底部 */
+        .footer {
+            background: #10131c;
+            color: #a7b3c7;
+            padding: 28px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #252e3e;
+        }
+
+        .footer a {
+            color: #b0c2e0;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .scenes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .scenes-grid {
+                grid-template-columns: 1fr;
+            }
+            .intro-grid {
+                flex-direction: column;
+            }
+            .intro-side {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><span>◆</span> jiuyou<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#intro">介绍</a></li>
+                <li><a href="#scenes">场景</a></li>
+                <li><a href="#faq">说明</a></li>
+                <li><a href="https://www-jiuyou.com" target="_blank" rel="noopener">jiuyou</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero 深色头图 -->
+    <section class="hero">
+        <div class="container">
+            <h1>理解 <em>jiuyou</em> 的实用视角</h1>
+            <p>一个围绕信息组织与可信访问展开的站点，提供结构化的内容索引与轻量导航。从资源梳理到知识查阅，jiuyou 更注重清晰度与实用性。</p>
+            <div class="trust-badge">
+                <i>⏺</i> 持续维护 · 内容可溯源
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心介绍区 浅色背景 -->
+    <section class="intro-section" id="intro">
+        <div class="container intro-grid">
+            <div class="intro-text">
+                <h2>站点介绍与可信框架</h2>
+                <p><strong>jiuyou</strong> 并非一个综合门户，而是一个以信息导航与主题聚合为出发点的个人项目。站点通过分类条目、参考链接与简短注释，帮助访问者快速定位感兴趣的内容领域。无论是技术参考还是日常资讯，jiuyou 倾向于采用「可验证、可回溯」的方式组织信息。</p>
+                <p>你可以将 <a href="https://www-jiuyou.com">jiuyou</a> 理解为一个轻量级的知识锚点：每个条目都尽可能附注来源或上下文，避免过度解读。网站本身不收集用户数据，不设置付费墙，也没有算法推荐——呈现即全部。</p>
+                <p>这种克制的设计思路，源于对信息过载的反思。jiuyou 希望扮演一个安静的向导，而非喧哗的枢纽。</p>
+            </div>
+            <div class="intro-side">
+                <h3>站点基调</h3>
+                <ul>
+                    <li>分类索引 + 简短注解</li>
+                    <li>外部参考优先标注来源</li>
+                    <li>无追踪、无广告、无注册要求</li>
+                    <li>更新日志公开可查</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section class="scenes" id="scenes">
+        <div class="container">
+            <h2>三个典型使用场景</h2>
+            <div class="scenes-grid">
+                <div class="scene-card">
+                    <div class="icon">📚</div>
+                    <h3>主题速览</h3>
+                    <p>当你需要快速了解某个领域的基本脉络时，jiuyou 提供了经过筛选的条目与链接。每个分类下都附有简短描述，帮助你判断是否值得深入查阅原始资料。</p>
+                </div>
+                <div class="scene-card">
+                    <div class="icon">🔗</div>
+                    <h3>参考查找</h3>
+                    <p>不再需要在多个标签页之间反复搜索。jiuyou 将分散的相关资源汇集到同一页面，并以一致的格式呈现。对于研究者或爱好者而言，这是一个节省时间的起始点。</p>
+                </div>
+                <div class="scene-card">
+                    <div class="icon">🧭</div>
+                    <h3>日常导航</h3>
+                    <p>当你想浏览一些有质量保障的站点，却又不想被算法推荐裹挟时，jiuyou 的链接列表可以作为日常浏览的跳板。内容选择偏向稳定与可靠，而非追逐热点。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见说明 FAQ 摘要 -->
+    <section class="faq-summary" id="faq">
+        <div class="container">
+            <h2>常见说明 · 简明回答</h2>
+            <div class="faq-item">
+                <strong>jiuyou 的内容来源是什么？</strong>
+                <p>站点中的大部分链接和参考均指向公开可访问的网页或文档。部分条目会附上简短评价或背景说明，帮助读者评估信息语境。若有特别标注，则表示内容来自特定领域公认的资料。</p>
+            </div>
+            <div class="faq-item">
+                <strong>站点多久更新一次？</strong>
+                <p>更新没有固定周期，但会持续维护。当发现失效链接或更有代表性的资源时，会进行替换或补充。你可以在页脚的更新记录中了解最近的变动。</p>
+            </div>
+            <div class="faq-item">
+                <strong>我可以贡献或反馈吗？</strong>
+                <p>目前 jiuyou 以个人维护为主，暂时不设公开编辑入口。如果你发现链接错误或有值得收录的内容，可以通过相关页面提供的联系方式（如邮件）告知。更多信息请直接访问 <a href="https://www-jiuyou.com">jiuyou</a> 站点。</p>
+            </div>
+            <div class="faq-item">
+                <strong>是否有移动端适配？</strong>
+                <p>页面采用响应式设计，在手机与平板设备上均可正常浏览。整体布局会随屏幕宽度调整，保证阅读体验。没有独立的移动应用，但浏览器访问即可。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>内容导航 · 不采集数据 · 不追踪用户 · <a href="https://www-jiuyou.com" target="_blank" rel="noopener">jiuyou</a></p>
+            <p style="margin-top: 6px; font-size: 0.8rem; opacity: 0.75;">基于个人维护 · 信息仅供参考</p>
+        </div>
+    </footer>
+
+</body>
+</html>
